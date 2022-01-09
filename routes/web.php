@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,5 +21,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::resource('tasks', TaskController::class);
+Route::resource('categories', CategoryController::class);
+Route::get('filters', [TaskController::class, 'filters'])->name('filters');
+Route::post('filter_tasks', [TaskController::class, 'filterTasks'])->name('filter_tasks');
 
 require __DIR__.'/auth.php';
