@@ -4,6 +4,7 @@
             {{ __('Categories') }}
         </h2>
     </x-slot>
+
     <div class="py-6">
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -48,7 +49,7 @@
                                     <tbody class="bg-white divide-y divide-gray-200">
                                         @foreach ($categories as $category)
                                             <tr>
-                                            <tr>
+
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="flex items-center">{{ $loop->iteration }}</div>
                                                 </td>
@@ -62,7 +63,7 @@
                                                         <a class="py-2 px-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
                                                             href="{{ route('categories.show', $category->id) }}">Show</a>
 
-                                                        <a <a
+                                                        <a
                                                             class="py-2 px-4 bg-orange-500 text-white rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
                                                             href="{{ route('categories.edit', $category->id) }}">Edit</a>
 

@@ -13,11 +13,11 @@
 
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-right">
-                            <a class="py-2 px-4 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
-                                href="{{ route('tasks.create') }}"> Create New Task</a>
+                            <a class="py-2 px-4 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+                                href="{{ route('tasks.create') }}"> Create Task</a>
                         </div>
                     </div>
-
+                </div>
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
                             <p>{{ $message }}</p>
@@ -64,6 +64,7 @@
 
                                             @foreach ($tasks as $task)
                                                 <tr>
+
                                                     <td class="px-6 py-4 whitespace-nowrap">
                                                         <div class="flex items-center">{{ $loop->iteration }}</div>
                                                     </td>
@@ -77,10 +78,10 @@
                                                         <div class="flex items-center">{{ $task->status }}</div>
                                                     </td>
                                                     <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="flex items-center">{{ $task->category_id }}</div>
+                                                        <div class="flex items-center">{{ $task->relatedCategory->name }}</div>
                                                     </td>
                                                     <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="flex items-center">{{ $task->created_by }}</div>
+                                                        <div class="flex items-center">{{ $task->relatedUser->name }}</div>
                                                     </td>
                                                     <td>
                                                         <form action="{{ route('tasks.destroy', $task->id) }}"
@@ -110,10 +111,7 @@
                         </div>
                     </div>
                     {!! $tasks->links() !!}
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 
 

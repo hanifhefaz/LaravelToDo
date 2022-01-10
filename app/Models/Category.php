@@ -13,6 +13,12 @@ class Category extends Model
         'name','created_by','updated_by','deleted_by',
     ];
 
+    public function category(){
+        return $this->belongsTo(Task::class,'category_id','id');
+    }
+    public function user(){
+        return $this->belongsTo(Task::class,'created_by','id');
+    }
     public function tasks(){
         return $this->hasMany(Task::class,'category_id','id');
     }

@@ -4,39 +4,34 @@
             {{ __('Show Task') }}
         </h2>
     </x-slot>
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
+    <div class="container mx-auto">
+        <div class="max-w-xl p-5 mx-auto my-10 bg-white rounded-md shadow-sm">
+          <div class="text-center">
+            <h1 class="my-3 text-3xl font-semibold text-gray-700">Current Task</h1>
+            <p class="text-gray-400">Details of the task are written below.</p>
+          </div>
+          <div>
+            <div class="mb-6">
+                <a class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+                href="{{ route('tasks.index') }}"> Back</a>
+              </div>
 
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('tasks.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
+              <div class="mb-6">
                 <strong>Title:</strong>
                 {{ $task->name }}
-            </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Description:</strong>
-                {{ $task->description }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Status:</strong>
-                {{ $task->status }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Category:</strong>
-                {{ $task->category }}
-            </div>
-        </div>
+        <div class="mb-6">
+            <strong>Description:</strong>
+            {{ $task->description }}
     </div>
+    <div class="mb-6">
+        <strong>Status:</strong>
+        {{ $task->status }}
+</div>
+<div class="mb-6">
+    <strong>Category:</strong>
+    {{ $task->category }}
+</div>
+
 </x-app-layout>

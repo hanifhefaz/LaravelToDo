@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
 class Task extends Model
@@ -12,24 +13,24 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'status','isShow','category_id','created_by','updated_by','deleted_by',
+        'title', 'description', 'status','isShow','category_id','created_by','updated_by','deleted_by','assignee'
     ];
 
-    protected static $logAttributes = ['title', 'description', 'status','isShow','category_id','created_by','updated_by','deleted_by',];
 
     protected $casts = [
         'isShow' => 'boolean',
       ];
 
-    public function user()
+    public function relatedUser()
     {
-    	return $this->belongsTo(User::class,'id','created_by');
+    	return $this->hasOne(User::class,'id','created_by');
     }
 
-    public function category(){
-        return $this->belongsTo(Category::class,'id','category_id');
+    public function relatedCategory(){
+        return $this->hasOne(Category::class,'id','category_id');
 
     }
+
 
     public function scopeOfStartDate($query,$start_date)
     {
@@ -55,6 +56,16 @@ class Task extends Model
             return $query->where('status',$status);
         }
         return $query;
+    }
+
+    public function scopeOfCreatedByMe($query)
+    {
+        return $query->where('created_by', Auth::user()->id);
+    }
+
+    public function scopeOfAssignedToMe($query)
+    {
+        return $query->where('assignee', Auth::user()->id);
     }
 
     public static function boot() {
