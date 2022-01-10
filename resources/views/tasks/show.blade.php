@@ -1,11 +1,12 @@
-@extends('layouts.layout')
-
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Show Task') }}
+        </h2>
+    </x-slot>
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Show Task</h2>
-            </div>
+
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('tasks.index') }}"> Back</a>
             </div>
@@ -38,4 +39,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>

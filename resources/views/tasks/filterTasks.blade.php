@@ -1,7 +1,11 @@
-@extends('layouts.layout')
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Filter Tasks') }}
+        </h2>
+    </x-slot>
 
-<section class="content">
+    <section class="content">
         <form action="" method="post" id="filter_form">
             @csrf
 
@@ -44,49 +48,48 @@
         </form>
 
 
-</section>
+    </section>
 
-<section class=" content">
-    <div class="row">
+    <section class=" content">
+        <div class="row">
 
-                    @if (isset($data))
-                        <table class="table">
-                            <thead>
-                                <th>No</th>
-                                <th>Title</th>
-                                <th>Description </th>
-                                <th>Status</th>
-                                <th>Created_at</th>
+            @if (isset($data))
+                <table class="table">
+                    <thead>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Description </th>
+                        <th>Status</th>
+                        <th>Created_at</th>
 
-                            </thead>
-                            <tbody>
-                                @foreach ($data as $post)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $post->title }}</td>
-                                        <td>{{ $post->description }}</td>
-                                        <td>{{ $post->status }}</td>
-                                        <td>{{ date('Y-m-d', strtotime($post->created_at)) }}</td>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $post)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $post->title }}</td>
+                                <td>{{ $post->description }}</td>
+                                <td>{{ $post->status }}</td>
+                                <td>{{ date('Y-m-d', strtotime($post->created_at)) }}</td>
 
 
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    @endif
-        <!-- /.col -->
-    </div>
-    <!-- /.row -->
-</section>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @endif
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
 
-@stop
+    <script>
+        function submitForm(form_type) {
 
-<script>
-     function submitForm(form_type) {
-
-                $('#filter_form').attr('action', "{{ route('filter_tasks') }}");
-                $('#filter_form').submit();
+            $('#filter_form').attr('action', "{{ route('filter_tasks') }}");
+            $('#filter_form').submit();
 
         }
-</script>
+    </script>
 
+</x-app-layout>
