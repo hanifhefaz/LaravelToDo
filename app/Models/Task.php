@@ -63,9 +63,12 @@ class Task extends Model
         return $query->where('created_by', Auth::user()->id);
     }
 
-    public function scopeOfAssignedToMe($query)
+    public function scopeOfAssignedToMe($query,$assignee)
     {
-        return $query->where('assignee', Auth::user()->id);
+        if (isset($assignee)) {
+            return $query->where('assignee', Auth::user()->id);
+        }
+        return $query;
     }
 
     public static function boot() {
@@ -83,7 +86,9 @@ class Task extends Model
 
         // create a event to happen on saving
         static::saving(function($table)  {
-            $table->created_by = Auth::user()->id ;
+            if (Auth::user()) {
+                $table->created_by = auth()->user()->id;
+            }
         });
     }
 }

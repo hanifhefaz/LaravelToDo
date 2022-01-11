@@ -137,7 +137,7 @@ class TaskController extends Controller
         $data = Task::ofStatus($status)
                     ->ofStartDate($start_date)
                     ->ofEndDate($end_date)
-                    // ->ofAssignedToMe($assignee)
+                    ->ofAssignedToMe($assignee)
                     ->get();
         return view('tasks.filterTasks',compact('data','request'));
 
