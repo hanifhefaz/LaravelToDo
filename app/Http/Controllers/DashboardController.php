@@ -10,11 +10,8 @@ class DashboardController extends Controller
     //
     public function index()
     {
-
         $data = DB::table('tasks')->select('status' ,DB::raw("COUNT('id') as count"))->groupBy('status')->get();
-
         return view('dashboard',compact('data'));
-        // return $data;
     }
 
 }

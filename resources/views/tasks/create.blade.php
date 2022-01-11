@@ -17,6 +17,18 @@
                         href="{{ route('tasks.index') }}"> Back</a>
                 </div>
 
+                {{-- This way we can loop through all the errors
+                However we can check and print the message separately for
+                each field as will like the code commented below: --}}
+
+                {{-- <div class="class name">
+                    <label>Name:</label>
+                    <input type="text" name="name" class="class name" placeholder="Name">
+                    @if ($errors->has('name'))
+                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                    @endif
+                </div> --}}
+
                 @if ($errors->any())
                     <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
                         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -39,8 +51,8 @@
                     <div class="mb-6">
                         <label for="message" class="block mb-2 text-sm text-gray-600">Description</label>
                         <textarea rows="5" id="description" name="description" placeholder="Description of the task"
-                            class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
-                            required></textarea>
+                            class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
+                        </textarea>
                     </div>
                     <div class="mb-6">
                         <label class="block mb-2 text-sm text-gray-600">Status </label>

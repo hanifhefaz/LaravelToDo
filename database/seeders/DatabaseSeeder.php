@@ -18,9 +18,6 @@ class DatabaseSeeder extends Seeder
             CategoryTableSeeder::class,
             TaskTableSeeder::class,
             UserTableSeeder::class,
-
-
-
         ]);
     }
 }

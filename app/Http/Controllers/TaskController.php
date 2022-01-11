@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskRequest;
 use App\Models\Category;
 use App\Models\Task;
 use App\Models\User;
@@ -42,18 +43,11 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
         //
-        // return $request->all();
-
-        $request->validate([
-            'title' => 'required',
-            'category_id' => 'required',
-        ]);
-
-        Task::create($request->all());
-
+        $input = $request->all();
+        Task::create($input);
         return redirect()->route('tasks.index')
                         ->with('success','Task created successfully.');
     }
