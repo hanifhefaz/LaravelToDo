@@ -36,7 +36,14 @@ You will be redirected to the welcome page, where you can login or create a new 
 
 After registering or login, the user is redirected to the dashboard, where the user can see a pie chart of the current tasks, showing the percentage of each type of the task status.
 
-![alt text](https://github.com/hanifhefaz/LaravelToDo/blob/master/GithubImages/dashboard.png?raw=true)
-![second text](/GithubImages/dashboard.png?raw=true)
+![Dashboard](/GithubImages/dashboard.png?raw=true)
 
 You can navigate through the navbar and view tasks, filter them, add new one or edit and delete them.
+
+Here is the tasks index page:
+![Tasks](/GithubImages/tasks_index.png?raw=true)
+
+And here is the filter page:
+
+![Filter](/GithubImages/filter.png?raw=true)
+
