@@ -23,7 +23,8 @@ class CreateTasksTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->BigInteger('assignee')->unsigned()->index();
             $table->foreign('assignee')->references('id')->on('users');
-            $table->integer('created_by');
+            $table->BigInteger('created_by')->unsigned()->index();
+            $table->foreign('created_by')->references('id')->on('users');
             $table->integer('updated_by')->nullable();
             $table->integer('deleted_by')->nullable();
             $table->timestamps();
