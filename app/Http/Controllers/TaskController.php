@@ -85,7 +85,7 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, Task $task, TaskRequest $taskRequest)
     {
         // Here we check if the current user is the author of the task
         // The right is defined in Task policy.
@@ -94,15 +94,8 @@ class TaskController extends Controller
         }
 
         // the validation below can also be transfered to Form Requests method.
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'status' => 'required',
-            'category_id' => 'required',
-            'assignee' => 'required',
-        ]);
-
-        $task->update($request->all());
+        $input = $taskRequest->all();
+        $task->update($request->all(),$input);
 
         return redirect()->route('tasks.index')
                         ->with('success','Task updated successfully');
