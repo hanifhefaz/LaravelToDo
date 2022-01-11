@@ -87,7 +87,13 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        // Here we check if the current user is the author of the task
+        // The right is defined in Task policy.
+        if ($request->user()->cannot('update', $task)) {
+            return redirect()->back()->withErrors(['You do not have this right!']);
+        }
+
+        // the validation below can also be transfered to Form Requests method.
         $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -108,9 +114,15 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy(Request $request, Task $task)
     {
         //
+        // Here we check if the current user is the author of the task
+        // The right is defined in Task policy.
+        if ($request->user()->cannot('delete', $task)) {
+            return redirect()->back()->withErrors(['You do not have this right!']);
+        }
+
         $task->delete();
 
         return redirect()->route('tasks.index')
