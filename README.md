@@ -22,7 +22,7 @@ Its made using Laravel 8 framework. MySQL is used for the database and a mixture
 
 ## Setup
 
-- Clone the repository: [](https://github.com/hanifhefaz/LaravelToDo.git)
+- Clone the repository: ```https://github.com/hanifhefaz/LaravelToDo.git```
 - Open the project in your editor and run ```composer install``` to install the required packages.
 - Make the ```.env``` file for your project
 - Generate a new Key, using ```php artisan generate:key```
