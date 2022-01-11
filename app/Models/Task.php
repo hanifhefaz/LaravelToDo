@@ -23,7 +23,7 @@ class Task extends Model
 
     public function relatedUser()
     {
-    	return $this->hasOne(User::class,'id','created_by');
+    	return $this->hasOne(User::class,'id','assignee');
     }
 
     public function relatedCategory(){

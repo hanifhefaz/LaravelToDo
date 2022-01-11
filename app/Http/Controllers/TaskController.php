@@ -79,7 +79,9 @@ class TaskController extends Controller
     public function edit(Task $task)
     {
         //
-        return view('tasks.edit',compact('task'));
+        $categories = Category::all();
+        $users = User::all();
+        return view('tasks.edit',compact('task','users','categories'));
     }
 
     /**
@@ -94,6 +96,10 @@ class TaskController extends Controller
         //
         $request->validate([
             'title' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            'category_id' => 'required',
+            'assignee' => 'required',
         ]);
 
         $task->update($request->all());
@@ -127,12 +133,15 @@ class TaskController extends Controller
         $start_date = $request->start_date;
         $end_date = $request->end_date;
         $status = $request->status;
-
+        $assignee= $request->assignee;
         $data = Task::ofStatus($status)
                     ->ofStartDate($start_date)
                     ->ofEndDate($end_date)
+                    // ->ofAssignedToMe($assignee)
                     ->get();
         return view('tasks.filterTasks',compact('data','request'));
+
+        // return $data;
 
     }
 }

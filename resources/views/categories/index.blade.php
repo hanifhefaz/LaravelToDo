@@ -63,8 +63,7 @@
                                                         <a class="py-2 px-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
                                                             href="{{ route('categories.show', $category->id) }}">Show</a>
 
-                                                        <a
-                                                            class="py-2 px-4 bg-orange-500 text-white rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+                                                        <a class="py-2 px-4 bg-orange-500 text-white rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
                                                             href="{{ route('categories.edit', $category->id) }}">Edit</a>
 
                                                         @csrf
