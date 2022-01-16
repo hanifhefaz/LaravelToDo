@@ -59,9 +59,12 @@ class Task extends Model
         return $query;
     }
 
-    public function scopeOfCreatedByMe($query)
+    public function scopeOfCreatedByMe($query,$assignee)
     {
-        return $query->where('created_by', Auth::user()->id);
+        if (isset($assignee)) {
+            return $query->where('created_by', Auth::user()->id);
+        }
+        return $query;
     }
 
     public function scopeOfAssignedToMe($query,$assignee)
