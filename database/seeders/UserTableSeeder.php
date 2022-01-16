@@ -15,9 +15,8 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $users = array(
-            array('id' => '1','name' => 'Lonnie Daniel','email' => 'zreichel@example.net','email_verified_at' => '2022-01-11 07:30:23','password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','remember_token' => 'ZgjzJN5ydF','created_at' => '2022-01-11 07:30:23','updated_at' => '2022-01-11 07:30:23'),
-            array('id' => '2','name' => 'Oliver Keeling','email' => 'hailie.hackett@example.net','email_verified_at' => '2022-01-11 07:30:23','password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','remember_token' => 'cg2RQyeuht','created_at' => '2022-01-11 07:30:23','updated_at' => '2022-01-11 07:30:23'),
-            array('id' => '3','name' => 'Adriel Denesik','email' => 'irma.parisian@example.org','email_verified_at' => '2022-01-11 07:30:23','password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','remember_token' => 'V7IeMpkYVr','created_at' => '2022-01-11 07:30:23','updated_at' => '2022-01-11 07:30:23')
+            array('id' => '1','name' => 'Admin','email' => 'admin@dashboard.af','email_verified_at' => NULL,'password' => '$2y$10$LYiWoulNceRrBD6tJcpADOLh92yMOqBDxWioJ6JOe6PV1q0Cw89mK','remember_token' => NULL,'created_at' => '2022-01-09 07:18:27','updated_at' => '2022-01-09 07:18:27'),
+            array('id' => '2','name' => 'ggg','email' => 'admin@dashboard.aff','email_verified_at' => NULL,'password' => '$2y$10$.5ciALLBYBLWZVy8D7.bU.2vCJ08ddtkfrcyQSU9CbYM97V2jejPi','remember_token' => NULL,'created_at' => '2022-01-16 06:12:50','updated_at' => '2022-01-16 06:12:50')
           );
           foreach ($users as $user){
 

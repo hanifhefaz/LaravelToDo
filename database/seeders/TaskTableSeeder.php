@@ -15,9 +15,10 @@ class TaskTableSeeder extends Seeder
     public function run()
     {
         $tasks = array(
-            array('id' => '1','title' => 'First Task','description' => 'my first task','isShow' => '1','status' => 'ACTIVE','category_id' => '1','assignee' => '3','created_by' => '3','updated_by' => NULL,'deleted_by' => NULL,'created_at' => '2022-01-11 08:09:43','updated_at' => '2022-01-11 08:09:43'),
-            array('id' => '2','title' => 'Second Task','description' => 'second task','isShow' => '1','status' => 'PENDING','category_id' => '1','assignee' => '1','created_by' => '2','updated_by' => NULL,'deleted_by' => NULL,'created_at' => '2022-01-11 08:27:57','updated_at' => '2022-01-11 08:27:57'),
-            array('id' => '3','title' => 'Third Task','description' => 'third task','isShow' => '1','status' => 'DONE','category_id' => '1','assignee' => '2','created_by' => '1','updated_by' => NULL,'deleted_by' => NULL,'created_at' => '2022-01-11 08:31:05','updated_at' => '2022-01-11 08:31:05')
+            array('id' => '1','title' => 'First Task','description' => 'My first task','isShow' => '1','status' => 'ACTIVE','category_id' => '1','created_by' => '1','updated_by' => NULL,'deleted_by' => NULL,'deleted_at' => NULL,'created_at' => '2022-01-16 10:55:44','updated_at' => '2022-01-16 10:55:44'),
+            array('id' => '2','title' => 'Second Task','description' => 'second task','isShow' => '1','status' => 'DONE','category_id' => '1','created_by' => '1','updated_by' => NULL,'deleted_by' => NULL,'deleted_at' => NULL,'created_at' => '2022-01-16 10:56:05','updated_at' => '2022-01-16 10:56:05'),
+            array('id' => '3','title' => 'Third Task','description' => 'test','isShow' => '1','status' => 'PENDING','category_id' => '1','created_by' => '2','updated_by' => NULL,'deleted_by' => NULL,'deleted_at' => NULL,'created_at' => '2022-01-16 10:56:57','updated_at' => '2022-01-16 10:56:57'),
+            array('id' => '4','title' => 'Fourth','description' => 'test','isShow' => '1','status' => 'ACTIVE','category_id' => '1','created_by' => '2','updated_by' => NULL,'deleted_by' => NULL,'deleted_at' => NULL,'created_at' => '2022-01-16 10:57:16','updated_at' => '2022-01-16 10:57:16')
           );
 
 

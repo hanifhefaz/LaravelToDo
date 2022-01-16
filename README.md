@@ -15,7 +15,7 @@ This is a simple To Do application, where users can:
 - Login
 - Create New Tasks, update or delete them
 - View Specific Tasks
-- Filter Tasks by date, status, or assigne
+- Filter Tasks by date, status, or assignee
 
 
 Its made using Laravel 8 framework. MySQL is used for the database and a mixture of CSS and Tailwaind is used.
@@ -27,7 +27,8 @@ Its made using Laravel 8 framework. MySQL is used for the database and a mixture
 - Make the ```.env``` file for your project
 - Generate a new Key, using ```php artisan generate:key```
 - Go to your database engine and make a database for the project
-- Run a fresh migration with seeders using ```php artisan migrate:fresh --seed```
+- Run a migrations using ```php artisan migrate```
+- Now seed the data step by step ```php artisan db:seed --class=UserTableSeeder``` then run ```php artisan db:seed --class=CategoryTableSeeder``` and finally run ```php artisan db:seed --class=TaskTableSeeder```
 - Now run the prject using ```php artisan serve```
 
 You will be redirected to the welcome page, where you can login or create a new account.
@@ -39,11 +40,13 @@ After registering or login, the user is redirected to the dashboard, where the u
 ![Dashboard](/GithubImages/dashboard.png?raw=true)
 
 You can navigate through the navbar and view tasks, filter them, add new one or edit and delete them.
-
+Tasks can only be deleted or edited by the users, who have created them.
 Here is the tasks index page:
+
 ![Tasks](/GithubImages/tasks_index.png?raw=true)
 
-And here is the filter page:
+Tasks can be filtered using the date, or assigneed to a specific user, or created by a specific user.
+here is the filter page:
 
 ![Filter](/GithubImages/filter.png?raw=true)
 
