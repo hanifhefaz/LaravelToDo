@@ -47,7 +47,9 @@ class TaskController extends Controller
     {
         //
         $input = $request->all();
-        Task::create($input);
+        $task =Task::create($input);
+        $task->users()->attach($request->assignee);
+
         return redirect()->route('tasks.index')
                         ->with('success','Task created successfully.');
     }
@@ -95,6 +97,7 @@ class TaskController extends Controller
 
         // the validation below can also be transfered to Form Requests method.
         $input = $taskRequest->all();
+        $task->users()->sync($request->assignee);
         $task->update($request->all(),$input);
 
         return redirect()->route('tasks.index')
@@ -117,7 +120,7 @@ class TaskController extends Controller
         }
 
         $task->delete();
-
+        $task->users()->sync($request->assignee);
         return redirect()->route('tasks.index')
                         ->with('success','Task deleted successfully');
     }
@@ -133,14 +136,13 @@ class TaskController extends Controller
         $end_date = $request->end_date;
         $status = $request->status;
         $assignee= $request->assignee;
+        $owner = $request->owner;
         $data = Task::ofStatus($status)
                     ->ofStartDate($start_date)
                     ->ofEndDate($end_date)
-                    ->ofAssignedToMe($assignee)
+                    ->OfAssignedToMe($assignee)
+                    ->OfCreatedByMe($owner)
                     ->get();
         return view('tasks.filterTasks',compact('data','request'));
-
-        // return $data;
-
     }
 }

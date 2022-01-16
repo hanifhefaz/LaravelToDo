@@ -91,7 +91,7 @@
                         <label class="block mb-2 text-sm text-gray-600">Assignee </label>
                         <select
                             class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
-                            name="assignee">
+                            name="assignee[]" multiple="multiple">
                             <option value="" selected disabled>{{ __('Assignee') }}</option>
                             @foreach ($users as $value)
                                 <option {{ isset($request) ? ($request->user == $value->id ? 'selected' : '') : '' }}

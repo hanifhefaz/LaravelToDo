@@ -56,7 +56,9 @@
                                             <td scope="col" class="px-6 py-3 text-left text-xs tracking-wider">
                                                 {{ $task->relatedCategory->name }}</td>
                                             <td scope="col" class="px-6 py-3 text-left text-xs tracking-wider">
-                                                {{ $task->relatedUser->name }}</td>
+                                                @foreach ($task->users as $user)
+                                                    <div class="flex items-center">{{ $user->name }}</div>
+                                                @endforeach
                                         </tr>
 
                                 </table>

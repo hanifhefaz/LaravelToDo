@@ -44,6 +44,7 @@ class User extends Authenticatable
 
     public function tasks()
     {
-    	return $this->hasMany(Task::class);
+        return $this->belongsToMany(User::class)->withPivot('id','user_id');
     }
+
 }

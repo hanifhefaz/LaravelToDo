@@ -24,14 +24,14 @@
                     </div>
                 @endif
                 @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -91,8 +91,12 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    <div class="flex items-center">{{ $task->relatedUser->name }}
-                                                    </div>
+
+                                                    @foreach ($task->users as $user)
+                                                        <div class="flex items-center">{{ $user->name }}</div>
+                                                    @endforeach
+
+
                                                 </td>
                                                 <td>
                                                     <form action="{{ route('tasks.destroy', $task->id) }}"

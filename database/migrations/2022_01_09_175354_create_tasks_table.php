@@ -21,12 +21,11 @@ class CreateTasksTable extends Migration
             $table->enum('status', ['ACTIVE', 'DONE', 'PENDING'])->nullable(false)->default('ACTIVE');
             $table->integer('category_id')->unsigned()->index();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->BigInteger('assignee')->unsigned()->index();
-            $table->foreign('assignee')->references('id')->on('users');
             $table->BigInteger('created_by')->unsigned()->index();
-            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->integer('updated_by')->nullable();
             $table->integer('deleted_by')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
 
         });

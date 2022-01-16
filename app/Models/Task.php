@@ -11,9 +11,10 @@ class Task extends Model
 {
 
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
-        'title', 'description', 'status','isShow','category_id','created_by','updated_by','deleted_by','assignee'
+        'title', 'description', 'status','isShow','category_id','created_by','updated_by','deleted_by','deleted_at',
     ];
 
 
@@ -21,9 +22,9 @@ class Task extends Model
         'isShow' => 'boolean',
       ];
 
-    public function relatedUser()
+    public function users()
     {
-    	return $this->hasOne(User::class,'id','assignee');
+        return $this->belongsToMany(User::class)->withPivot('id','user_id');
     }
 
     public function relatedCategory(){
@@ -66,7 +67,9 @@ class Task extends Model
     public function scopeOfAssignedToMe($query,$assignee)
     {
         if (isset($assignee)) {
-            return $query->where('assignee', Auth::user()->id);
+            return $query->whereHas('users', function ($q) {
+                $q->where('user_id', Auth::user()->id);
+        });
         }
         return $query;
     }

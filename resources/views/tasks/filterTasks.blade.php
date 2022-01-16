@@ -48,10 +48,14 @@
                             </select>
                         </div>
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                            <label class="block mb-2 text-sm text-gray-600">Assigneed To Me:</label>
-                            <input
-                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                                type="checkbox" name="assignee" value="assignee">
+                            <label class="block mb-2 text-sm text-gray-600">Assigneed To Me:
+                                <input
+                                    class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                    type="checkbox" name="assignee" value="assignee"></label>
+                            <label class="block mb-2 text-sm text-gray-600">Created By Me:
+                                <input
+                                    class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                    type="checkbox" name="owner" value="owner"></label>
                         </div>
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                             <label class="block mb-2 text-sm text-gray-600">Filter </label>
@@ -59,7 +63,6 @@
                                 class="w-full px-2 py-2 text-white bg-indigo-500 rounded-md  focus:bg-indigo-600 focus:outline-none">
                                 Filter Tasks
                             </button>
-
                         </div>
                     </div>
                 </form>
@@ -124,7 +127,9 @@
                                         <div class="flex items-center">{{ $task->relatedCategory->name }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center">{{ $task->relatedUser->name }}</div>
+                                        @foreach ($task->users as $user)
+                                            <div class="flex items-center">{{ $user->name }}</div>
+                                        @endforeach
                                     </td>
                                     <td>
                                         <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">

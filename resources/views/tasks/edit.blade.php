@@ -52,14 +52,11 @@
                             class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
                             name="status" name="status">
                             <option value="" selected> Status </option>
-                            <option {{ isset($request) ? ($request->status == 'ACTIVE' ? 'selected' : '') : '' }}
-                                value="ACTIVE">
+                            <option {{ $task->status == 'active' ? ' selected' : '' }} value="ACTIVE">
                                 ACTIVE </option>
-                            <option {{ isset($request) ? ($request->status == 'DONE' ? 'selected' : '') : '' }}
-                                value="DONE">
+                            <option {{ $task->status == 'DONE' ? ' selected' : '' }} value="DONE">
                                 DONE </option>
-                            <<option {{ isset($request) ? ($request->status == 'PENDING' ? 'selected' : '') : '' }}
-                                value="PENDING">
+                            <<option {{ $task->status == 'PENDING' ? ' selected' : '' }} value="PENDING">
                                 PENDING </option>
                         </select>
                     </div>
@@ -71,8 +68,7 @@
                             name="category_id">
                             <option value="" selected disabled>{{ __('category') }}</option>
                             @foreach ($categories as $value)
-                                <option
-                                    {{ isset($request) ? ($request->category == $value->id ? 'selected' : '') : '' }}
+                                <option {{ $task->category_id == $value->id ? 'selected' : '' }}
                                     value="{{ $value->id }}">
                                     {{ $value->name }}</option>
                             @endforeach
@@ -83,10 +79,10 @@
                         <label class="block mb-2 text-sm text-gray-600">Assignee </label>
                         <select
                             class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
-                            name="assignee">
-                            <option value="" selected disabled>{{ __('Assignee') }}</option>
+                            name="assignee[]" multiple="multiple">
                             @foreach ($users as $value)
-                                <option {{ isset($request) ? ($request->user == $value->id ? 'selected' : '') : '' }}
+                                <option
+                                    {{ in_array($value->id, $task->users->pluck('id')->toArray()) ? ' selected' : '' }}
                                     value="{{ $value->id }}">
                                     {{ $value->name }}</option>
                             @endforeach
